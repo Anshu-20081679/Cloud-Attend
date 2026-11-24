@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudAttend - Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">CA</span><span>CloudAttend</span></div>
+    <nav aria-label="Main navigation">
+      <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+      <button class="nav-btn" data-page="students">♟ Students</button>
+      <button class="nav-btn" data-page="attendance">✓ Attendance</button>
+      <button class="nav-btn" data-page="reports">▤ Reports</button>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="page-heading"><div><p class="eyebrow">OVERVIEW</p><h1 id="page-title">Dashboard</h1></div><button class="primary" id="add-student-top">＋ Add Student</button></div>
+    <section id="dashboard-page" class="page">
+      <div class="stats-grid">
+        <article class="stat-card"><p>Total Students</p><strong id="total-count">0</strong><span>Registered students</span></article>
+        <article class="stat-card"><p>Present</p><strong id="present-count">0</strong><span>Today's attendance</span></article>
+        <article class="stat-card"><p>Absent</p><strong id="absent-count">0</strong><span>Today's attendance</span></article>
+        <article class="stat-card"><p>Late</p><strong id="late-count">0</strong><span>Today's attendance</span></article>
+      </div>
+      <section class="panel"><div class="panel-header"><h2>Today's Attendance</h2><button class="secondary" data-go="attendance">Mark Attendance</button></div><div id="dashboard-list" class="student-list"></div></section>
+    </section>
+    <section id="students-page" class="page hidden">
+      <section class="panel"><div class="panel-header"><h2>Student List</h2><button class="primary" id="add-student">＋ Add Student</button></div><div class="search-row"><input id="student-search" placeholder="Search by name, roll number or course"></div><div id="students-list" class="student-list"></div></section>
+    </section>
+    <section id="attendance-page" class="page hidden">
+      <section class="panel"><div class="panel-header attendance-header"><div><h2>Mark Daily Attendance</h2><p class="muted">Choose a status for each registered student</p></div><input type="date" id="attendance-date"></div>
+      <div class="notice">Select a status for each student, then press Save Attendance.</div>
+      <div class="toolbar"><input id="attendance-search" placeholder="Find a student"><button class="secondary" id="mark-all">Mark all present</button><button class="primary" id="save-attendance">Save Attendance</button></div>
+      <div id="attendance-list" class="student-list"></div><p id="save-message" class="success"></p></section>
+    </section>
+    <section id="reports-page" class="page hidden">
+      <div class="stats-grid">
+        <article class="stat-card"><p>Marked Records</p><strong id="records-count">0</strong></article>
+        <article class="stat-card"><p>Present</p><strong id="report-present">0</strong></article>
+        <article class="stat-card"><p>Absent</p><strong id="report-absent">0</strong></article>
+        <article class="stat-card"><p>Late</p><strong id="report-late">0</strong></article>
+      </div>
+      <section class="panel"><div class="panel-header"><h2>Attendance History</h2><button class="primary" id="export-csv">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Student</th><th>Roll No.</th><th>Course</th><th>Status</th></tr></thead><tbody id="history-table"></tbody></table></div></section>
+    </section>
+  </main>
+  <dialog id="student-dialog"><form method="dialog" id="student-form"><h2>Add Student</h2><label>Student Name<input id="new-name" required></label><label>Roll Number<input id="new-roll" required></label><label>Course<input id="new-course" required></label><div class="dialog-actions"><button class="secondary" value="cancel">Cancel</button><button class="primary" id="save-student" value="default">Save Student</button></div></form></dialog>
+  <footer>CloudAttend · Student Attendance Management System</footer>
+  <script src="script.js"></script>
+</body>
+</html>
